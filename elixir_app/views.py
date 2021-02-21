@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect #for rendering htmls
+from django.shortcuts import render, redirect  # for rendering html5
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.forms import inlineformset_factory
@@ -88,14 +88,14 @@ def PredictImage(request):
                 print("Modeling part now.............")
 
                 # import the necessary packages
-                #import the necessary packages
+                # import the necessary packages
                 import tensorflow as tf
                 import keras
                 from keras.preprocessing.image import img_to_array
                 from keras.models import load_model
-                from gpiozero import LEDBoard
-                from gpiozero.tools import random_values
-                from threading import Thread
+                # from gpiozero import LEDBoard
+                # from gpiozero.tools import random_values
+                # from threading import Thread
                 import numpy as np
                 import h5py
                 import imutils
@@ -110,7 +110,7 @@ def PredictImage(request):
 
                 # pre-process the image for classification
                 print("Preprocessing the image now.............")
-                image = cv2.resize(image, (64, 64))
+                image = cv2.resize(image, (96, 96))
                 image = image.astype("float") / 255.0
                 image = img_to_array(image)
                 image = np.expand_dims(image, axis=0)
@@ -125,7 +125,7 @@ def PredictImage(request):
 
                 # build the label
                 proba = 0
-                label = None;
+                label = None
 
                 if normal > cancer:
                     proba = normal
